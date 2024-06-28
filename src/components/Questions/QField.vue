@@ -31,6 +31,7 @@
   text-transform: uppercase;
   width: 50px;
   height: 50px;
+  flex-shrink: 0;
   background: var(--violet-light);
   box-shadow: 5px 4px 6px rgba(0, 0, 0, 0.05);
   font-size: 32px;
@@ -50,10 +51,10 @@
 
 .field.done {
   pointer-events: none;
+}
 
-  &:hover {
-    background-color: initial;
-  }
+.field:hover {
+  background-color: initial;
 }
 
 .field.correct {
@@ -80,5 +81,16 @@
 
 .field.error .text {
   color: var(--white);
+}
+
+@media (max-width: 998px) {
+  .field {
+    padding: 20px;
+    gap: 20px
+  }
+
+  .text {
+    font-size: 18px;
+  }
 }
 </style>

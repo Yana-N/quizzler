@@ -54,7 +54,7 @@ import IconArrow from '@/assets/images/icons/arrow.vue'
   margin: 0;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 998px) {
   .wrapper {
     position: static;
   }

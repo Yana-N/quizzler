@@ -23,4 +23,11 @@ hr {
   max-width: 204px;
   width: 100%;
 }
+
+@media (max-width: 998px) {
+  .score, .text {
+    margin: 0 0 30px;
+    font-size: 22px;
+  }
+}
 </style>

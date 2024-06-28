@@ -27,4 +27,10 @@
 .button:active {
   opacity: 0.7;
 }
+
+@media (max-width: 998px) {
+  .button {
+    font-size: 24px;
+  }
+}
 </style>
