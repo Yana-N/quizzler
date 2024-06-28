@@ -19,11 +19,11 @@
   gap: 45px;
   background-color: var(--white);
   border-radius: 10px;
-  transition: background-color 0.3s ease-in-out;
+  transition: color, background-color 0.3s ease-in-out;
 }
 
 .field:hover {
-  background-color: var(--violet-light);
+  background-color: var(--violet-hover);
   cursor: pointer;
 }
 
@@ -51,10 +51,6 @@
 
 .field.done {
   pointer-events: none;
-}
-
-.field:hover {
-  background-color: initial;
 }
 
 .field.correct {
