@@ -1,5 +1,9 @@
-<script setup></script>
+<script setup>
+import ResultsScreen from '@/components/ResultsScreen.vue'
+</script>
 
 <template>
-  <p>results</p>
+  <results-screen />
 </template>
+
+<style scoped></style>

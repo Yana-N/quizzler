@@ -11,7 +11,7 @@ const isQuizStarted = route.query.question ?? ref(false)
 
 const startQuiz = () => {
   isQuizStarted.value = true
-  
+
   router.replace({
     query: {
       ...route.query,
@@ -26,6 +26,4 @@ const startQuiz = () => {
   <quiz-screen v-else />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
