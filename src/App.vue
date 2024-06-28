@@ -4,12 +4,12 @@ import { computed } from 'vue'
 
 const route = useRoute()
 
-const pageName = computed(() => route.name)
+const pageName = computed(() => route.fullPath.includes('question') ? 'questions' : route.name)
 const bgPath = computed(() => `background-image: url(src/assets/images/backgrounds/${pageName.value}.jpg)`)
 </script>
 
 <template>
-  <main :style="bgPath">
+  <main>
     <RouterView />
   </main>
 </template>
