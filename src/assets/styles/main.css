@@ -1,0 +1,41 @@
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #353535;
+    --violet-light: #ECE0FC;
+    --violet: #6813DE;
+    --blue-light: #C3E2FF;
+    --blue: #80C0FE;
+    --red-light: #FFB0BA;
+    --red: #FF475D;
+
+    --laptop: 1024px;
+    --tablet: 768px;
+    --mobile: 576px;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Quicksand", sans-serif;
+    font-size: 24px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--white);
+    transition: opacity 0.3s;
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: no-repeat center / cover;
+}

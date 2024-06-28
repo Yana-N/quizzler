@@ -1,9 +1,15 @@
 <script setup>
-import { RouterView } from 'vue-router'
+import { RouterView, useRoute } from 'vue-router'
+import { computed } from 'vue'
+
+const route = useRoute()
+
+const pageName = computed(() => route.name)
+const bgPath = computed(() => `background-image: url(src/assets/images/backgrounds/${pageName.value}.jpg)`)
 </script>
 
 <template>
-  <RouterView />
+  <main :style="bgPath">
+    <RouterView />
+  </main>
 </template>
-
-<style scoped></style>
