@@ -9,7 +9,9 @@
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+$tablet: var(--tablet);
+
 .field {
   max-width: 700px;
   width: 100%;
@@ -20,11 +22,41 @@
   background-color: var(--white);
   border-radius: 10px;
   transition: color, background-color 0.3s ease-in-out;
-}
 
-.field:hover {
-  background-color: var(--violet-hover);
-  cursor: pointer;
+  &:hover {
+    background-color: var(--violet-hover);
+    cursor: pointer;
+  }
+
+  &.done {
+    pointer-events: none;
+  }
+
+  &.correct {
+    background: var(--blue-light);
+
+    .index {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .text {
+      color: var(--violet);
+    }
+  }
+
+  &.error {
+    background: var(--red-light);
+
+    .index {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .text {
+      color: var(--white);
+    }
+  }
 }
 
 .index {
@@ -49,37 +81,7 @@
   font-weight: 500;
 }
 
-.field.done {
-  pointer-events: none;
-}
-
-.field.correct {
-  background: var(--blue-light);
-}
-
-.field.error {
-  background: var(--red-light);
-}
-
-.field.correct .index {
-  background: var(--blue);
-  color: var(--white);
-}
-
-.field.correct .text {
-  color: var(--violet);
-}
-
-.field.error .index {
-  background: var(--red);
-  color: var(--white);
-}
-
-.field.error .text {
-  color: var(--white);
-}
-
-@media (max-width: 998px) {
+@media (max-width: $tablet) {
   .field {
     padding: 20px;
     gap: 20px

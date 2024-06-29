@@ -14,7 +14,9 @@ import IconArrow from '@/assets/images/icons/arrow.vue'
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+$tablet: var(--tablet);
+
 .page {
   cursor: pointer;
   background-image: url('../assets/images/backgrounds/start.jpg');
@@ -36,10 +38,10 @@ import IconArrow from '@/assets/images/icons/arrow.vue'
   font-weight: 600;
   font-size: 128px;
   line-height: 1.2;
-}
 
-.title span {
-  font-size: 300px;
+  span {
+    font-size: 300px;
+  }
 }
 
 .cta {
@@ -48,23 +50,23 @@ import IconArrow from '@/assets/images/icons/arrow.vue'
   gap: 14px;
   font-size: 32px;
   font-weight: 600;
+
+  p {
+    margin: 0;
+  }
 }
 
-.cta p {
-  margin: 0;
-}
-
-@media (max-width: 998px) {
+@media (max-width: $tablet) {
   .wrapper {
     position: static;
   }
 
   .title {
     font-size: 64px;
-  }
 
-  .title span {
-    font-size: 75px;
+    span {
+      font-size: 75px;
+    }
   }
 }
 </style>

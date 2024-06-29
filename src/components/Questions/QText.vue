@@ -9,7 +9,9 @@
   <hr>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+$tablet: var(--tablet);
+
 .score, .text {
   margin: 0 0 42px;
   text-align: center;
@@ -24,7 +26,7 @@ hr {
   width: 100%;
 }
 
-@media (max-width: 998px) {
+@media (max-width: $tablet) {
   .score, .text {
     margin: 0 0 30px;
     font-size: 22px;

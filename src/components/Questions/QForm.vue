@@ -13,20 +13,20 @@ import QButton from '@/components/Questions/QButton.vue'
   <q-button class="button" />
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .q-form {
   width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
-}
 
-.q-form .field {
-  margin-bottom: 15px;
-}
+  .field {
+    margin-bottom: 15px;
 
-.q-form .field:last-child {
-  margin-bottom: 0px;
+    &:last-child {
+      margin-bottom: 0px;
+    }
+  }
 }
 
 .button {

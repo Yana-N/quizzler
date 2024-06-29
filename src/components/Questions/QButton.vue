@@ -6,7 +6,9 @@
   <button class="button">Next</button>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+$tablet: var(--tablet);
+
 .button {
   padding: 15px 34px;
   background-color: var(--blue-light);
@@ -18,17 +20,17 @@
   font-family: inherit;
   cursor: pointer;
   transition: background-color, opacity 0.2s;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    opacity: 0.7;
+  }
 }
 
-.button:hover {
-  opacity: 0.9;
-}
-
-.button:active {
-  opacity: 0.7;
-}
-
-@media (max-width: 998px) {
+@media (max-width: $tablet) {
   .button {
     font-size: 24px;
   }

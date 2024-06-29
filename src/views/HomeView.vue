@@ -12,12 +12,7 @@ const isQuizStarted = route.query.question ?? ref(false)
 const startQuiz = () => {
   isQuizStarted.value = true
 
-  router.replace({
-    query: {
-      ...route.query,
-      question: 1
-    }
-  })
+  router.replace({ query: { ...route.query, question: 1 } })
 }
 </script>
 
