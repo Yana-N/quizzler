@@ -16,7 +16,7 @@ const { goToStartPage } = useQueryHandler()
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .page {
   flex-direction: column;
   text-align: center;
@@ -41,6 +41,11 @@ const { goToStartPage } = useQueryHandler()
   font-size: 48px;
   font-weight: 600;
   color: var(--black);
+  transition: opacity 0.3s ease-in-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 @media (max-width: 998px) {
