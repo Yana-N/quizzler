@@ -91,12 +91,18 @@ defineProps({
 
 @media (max-width: 998px) {
   .field {
-    padding: 20px;
+    padding: 10px;
     gap: 20px
   }
 
   .text {
-    font-size: 18px;
+    font-size: 16px;
+  }
+
+  .index {
+    width: 36px;
+    height: 36px;
+    font-size: 22px;
   }
 }
 </style>

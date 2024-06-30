@@ -50,7 +50,8 @@ const btnText = computed(() => isLastQuestion.value ? 'Finish' : 'Next')
 
 @media (max-width: 998px) {
   .button {
-    font-size: 24px;
+    margin-top: 20px;
+    font-size: 18px;
   }
 }
 </style>

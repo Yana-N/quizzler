@@ -30,8 +30,12 @@ hr {
 
 @media (max-width: 998px) {
   .score, .text {
-    margin: 0 0 30px;
-    font-size: 22px;
+    margin: 0 0 15px;
+    font-size: 20px;
+  }
+
+  hr {
+    margin-bottom: 30px;
   }
 }
 </style>

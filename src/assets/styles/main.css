@@ -35,10 +35,20 @@ a {
 
 .page {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: no-repeat center / cover;
+}
+
+@media (max-width: 998px) {
+    html, body {
+        overflow: initial;
+    }
+
+    .page {
+        height: 100%;
+    }
 }
