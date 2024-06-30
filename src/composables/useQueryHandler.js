@@ -18,9 +18,8 @@ export function useQueryHandler() {
   }
 
   function goToStartPage() {
-    localStorage.clear()
     questionsStore.currentQuestionIndex = 0
-
+    
     return router.push({ name: 'home' })
   }
 

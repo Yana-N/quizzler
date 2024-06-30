@@ -1,5 +1,7 @@
 <script setup>
 import IconArrow from '@/assets/images/icons/arrow.vue'
+
+localStorage.clear()
 </script>
 
 <template>

@@ -44,7 +44,10 @@ const selectOption = (index) => {
 
   isCorrect.value = +index === indexOfCorrectAnswer.value
 
-  if (isCorrect.value) correctAnswersCount.value++
+  if (isCorrect.value) {
+    correctAnswersCount.value++
+    localStorage.setItem('correct-answer-count', correctAnswersCount.value)
+  }
 }
 
 const isKeyInRange = (key) => {
@@ -69,6 +72,7 @@ useEventListener(window, 'keyup', (e) => {
 </script>
 
 <template>
+  {{ correctAnswersCount }}
   <div class="q-form">
     <q-field
       v-for="(text, index) in answerOptions[currentQuestionIndex]"

@@ -6,11 +6,12 @@ import { getKeyByValue } from '@/utils.js'
 export const useQuestionsStore = defineStore('questions', () => {
   const savedQuestion = localStorage.getItem('question-number')
   const savedQuestions = JSON.parse(localStorage.getItem('questions'))
+  const savedCorrectAnswers = JSON.parse(localStorage.getItem('correct-answer-count'))
 
   const loading = ref(false)
   const questions = ref(savedQuestions ?? [])
   const currentQuestionIndex = ref(savedQuestion ? parseInt(savedQuestion) - 1 : 0)
-  const correctAnswersCount = ref(0)
+  const correctAnswersCount = ref(savedCorrectAnswers ? parseInt(savedCorrectAnswers) : 0)
 
   const totalQuestionsCount = computed(() => questions.value.length)
 
@@ -34,7 +35,7 @@ export const useQuestionsStore = defineStore('questions', () => {
   })
 
   const getQuestions = async () => {
-    if (questions.value?.length > 0) return
+    if (!!questions.value?.length) return
 
     try {
       loading.value = true
