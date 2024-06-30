@@ -22,8 +22,6 @@ const btnText = computed(() => isLastQuestion.value ? 'Finish' : 'Next')
 </template>
 
 <style scoped lang="scss">
-$tablet: var(--tablet);
-
 .button {
   padding: 15px 34px;
   background-color: var(--blue-light);
@@ -50,7 +48,7 @@ $tablet: var(--tablet);
   }
 }
 
-@media (max-width: $tablet) {
+@media (max-width: 998px) {
   .button {
     font-size: 24px;
   }

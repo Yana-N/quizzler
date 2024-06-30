@@ -28,8 +28,6 @@ setDefaultState()
 </template>
 
 <style scoped lang="scss">
-$tablet: var(--tablet);
-
 .page {
   cursor: pointer;
   background-image: url('../assets/images/backgrounds/start.jpg');
@@ -69,7 +67,7 @@ $tablet: var(--tablet);
   }
 }
 
-@media (max-width: $tablet) {
+@media (max-width: 998px) {
   .wrapper {
     position: static;
   }

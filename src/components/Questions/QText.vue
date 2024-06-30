@@ -14,8 +14,6 @@ defineProps({
 </template>
 
 <style scoped lang="scss">
-$tablet: var(--tablet);
-
 .score, .text {
   margin: 0 0 42px;
   text-align: center;
@@ -30,7 +28,7 @@ hr {
   width: 100%;
 }
 
-@media (max-width: $tablet) {
+@media (max-width: 998px) {
   .score, .text {
     margin: 0 0 30px;
     font-size: 22px;

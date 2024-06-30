@@ -20,8 +20,6 @@ defineProps({
 </template>
 
 <style scoped lang="scss">
-$tablet: var(--tablet);
-
 .field {
   max-width: 700px;
   width: 100%;
@@ -91,7 +89,7 @@ $tablet: var(--tablet);
   font-weight: 500;
 }
 
-@media (max-width: $tablet) {
+@media (max-width: 998px) {
   .field {
     padding: 20px;
     gap: 20px
