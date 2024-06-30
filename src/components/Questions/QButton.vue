@@ -1,9 +1,24 @@
 <script setup>
+import { computed, toRefs } from 'vue'
+import { useQuestionsStore } from '@/stores/questions.js'
 
+const questionsStore = useQuestionsStore()
+const { currentQuestionIndex, totalQuestionsCount } = toRefs(questionsStore)
+
+const isLastQuestion = computed(() => {
+  return currentQuestionIndex.value + 1 === totalQuestionsCount.value
+})
+
+const btnText = computed(() => isLastQuestion.value ? 'Finish' : 'Next')
 </script>
 
 <template>
-  <button class="button">Next</button>
+  <button
+    @click="$emit(isLastQuestion ? 'go-to-results' : 'next')"
+    class="button"
+  >
+    {{ btnText }}
+  </button>
 </template>
 
 <style scoped lang="scss">
@@ -27,6 +42,11 @@ $tablet: var(--tablet);
 
   &:active {
     opacity: 0.7;
+  }
+
+  &[disabled] {
+    opacity: 0.8;
+    pointer-events: none;
   }
 }
 

@@ -1,10 +1,13 @@
 <script setup>
+import { useQuestionsStore } from '@/stores/questions.js'
+
+const questionsStore = useQuestionsStore()
 </script>
 
 <template>
   <div class="page">
     <p class="text">Bravo! You have Scored</p>
-    <p class="score">9/10</p>
+    <p class="score">{{ questionsStore.correctAnswersCount }}/{{ questionsStore.totalQuestionsCount }}</p>
     <p class="action">Wanna Play Again?</p>
   </div>
 </template>

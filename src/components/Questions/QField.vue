@@ -1,11 +1,21 @@
 <script setup>
+import { convertNumToLetter } from '@/utils.js'
 
+defineProps({
+  answer: {
+    type: Object,
+    default: () => ({})
+  }
+})
 </script>
 
 <template>
-  <div class="field">
-    <div class="index">A</div>
-    <p class="text">Gauze grievance disorder</p>
+  <div
+    @click="$emit('select-option', answer.index)"
+    class="field"
+  >
+    <div class="index">{{ convertNumToLetter(answer.index) }}</div>
+    <p v-html="answer.text" class="text" />
   </div>
 </template>
 

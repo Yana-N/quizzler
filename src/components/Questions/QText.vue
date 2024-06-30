@@ -1,11 +1,15 @@
 <script setup>
-
+defineProps({
+  question: {
+    type: Object,
+    default: () => ({})
+  }
+})
 </script>
 
 <template>
-  <p class="score">Question 2/10</p>
-  <p class="text">Which of the following is the term for surgical complications resulting from surgical sponges left
-    inside the patient's body?</p>
+  <p class="score">Question {{ question.currentIndex }}/{{ question.total }}</p>
+  <p v-html="question.text" class="text" />
   <hr>
 </template>
 

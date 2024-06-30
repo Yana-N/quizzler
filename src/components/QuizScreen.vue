@@ -1,12 +1,37 @@
 <script setup>
+import { computed, toRefs } from 'vue'
 import QText from '@/components/Questions/QText.vue'
 import QForm from '@/components/Questions/QForm.vue'
+import { useQuestionsStore } from '@/stores/questions.js'
+import Loader from '@/components/Loader.vue'
+import { useRoute, useRouter } from 'vue-router'
+
+const router = useRouter()
+const route = useRoute()
+
+const questionsStore = useQuestionsStore()
+
+router.replace({ query: { ...route.query, question: questionsStore.currentQuestionIndex + 1 } })
+
+questionsStore.getQuestions()
+
+const questionText = computed(() => questionsStore.currentQuestion?.question)
 </script>
 
 <template>
   <div class="page">
-    <div class="container">
-      <q-text />
+    <loader v-if="questionsStore.loading" />
+    <div
+      v-else
+      class="container"
+    >
+      <q-text
+        :question="{
+            currentIndex: questionsStore.currentQuestionIndex + 1,
+            total: questionsStore.totalQuestionsCount,
+            text: questionText
+          }"
+      />
       <q-form />
     </div>
   </div>
