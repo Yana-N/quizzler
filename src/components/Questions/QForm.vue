@@ -1,5 +1,5 @@
 <script setup>
-import { ref, toRefs } from 'vue'
+import { onBeforeMount, ref, toRefs } from 'vue'
 import { useEventListener } from '@vueuse/core'
 import { useQuestionsStore } from '@/stores/questions.js'
 import { useQueryHandler } from '@/composables/useQueryHandler.js'
@@ -30,9 +30,14 @@ const nextQuestion = () => {
   isAnswered.value = false
 
   incrementQuestionParam()
+
+  localStorage.setItem('question-number', (questionsStore.currentQuestionIndex + 1).toString())
+  localStorage.removeItem('user-answer-index')
 }
 
 const selectOption = (index) => {
+  localStorage.setItem('user-answer-index', index)
+
   isButtonDisabled.value = false
   isAnswered.value = true
   selectedItem.value = index
@@ -52,6 +57,12 @@ const handleKeyup = ({ key }) => {
   }
 }
 
+onBeforeMount(() => {
+  const answer = localStorage.getItem('user-answer-index')
+
+  if (answer) selectOption(answer)
+})
+
 useEventListener(window, 'keyup', (e) => {
   handleKeyup(e)
 })
@@ -67,7 +78,7 @@ useEventListener(window, 'keyup', (e) => {
       @keyup="handleKeyup"
       :class="{
         'correct': isAnswered && isCorrect && indexOfCorrectAnswer === +index,
-        'error': isAnswered && !isCorrect && selectedItem === index,
+        'error': isAnswered && !isCorrect && +selectedItem === index,
         'done': isAnswered
       }"
     />

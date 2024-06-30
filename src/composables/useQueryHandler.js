@@ -8,15 +8,25 @@ export function useQueryHandler() {
   const questionsStore = useQuestionsStore()
 
   function incrementQuestionParam() {
-    return router.replace({ query: { ...route.query, 'question': questionsStore.currentQuestionIndex + 1 } })
+    const questionNumber = questionsStore.currentQuestionIndex + 1
+
+    return router.replace({ query: { ...route.query, 'question': questionNumber } })
   }
 
   function goToResultsPage() {
     return router.push({ name: 'results' })
   }
 
+  function goToStartPage() {
+    localStorage.clear()
+    questionsStore.currentQuestionIndex = 0
+
+    return router.push({ name: 'home' })
+  }
+
   return {
     incrementQuestionParam,
-    goToResultsPage
+    goToResultsPage,
+    goToStartPage
   }
 }

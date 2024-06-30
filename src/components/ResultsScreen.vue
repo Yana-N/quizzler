@@ -1,14 +1,18 @@
 <script setup>
 import { useQuestionsStore } from '@/stores/questions.js'
+import { useQueryHandler } from '@/composables/useQueryHandler.js'
 
 const questionsStore = useQuestionsStore()
+const { goToStartPage } = useQueryHandler()
 </script>
 
 <template>
   <div class="page">
     <p class="text">Bravo! You have Scored</p>
     <p class="score">{{ questionsStore.correctAnswersCount }}/{{ questionsStore.totalQuestionsCount }}</p>
-    <p class="action">Wanna Play Again?</p>
+    <router-link :to="{ name: 'home'}" @click="goToStartPage">
+      <p class="action">Wanna Play Again?</p>
+    </router-link>
   </div>
 </template>
 
@@ -36,6 +40,7 @@ const questionsStore = useQuestionsStore()
   margin: 0;
   font-size: 48px;
   font-weight: 600;
+  color: var(--black);
 }
 
 @media (max-width: 998px) {

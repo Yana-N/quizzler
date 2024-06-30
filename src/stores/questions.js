@@ -4,9 +4,12 @@ import { useFetch } from '@vueuse/core'
 import { getKeyByValue } from '@/utils.js'
 
 export const useQuestionsStore = defineStore('questions', () => {
+  const savedQuestion = localStorage.getItem('question-number')
+  const savedQuestions = JSON.parse(localStorage.getItem('questions'))
+  
   const loading = ref(true)
-  const questions = ref([])
-  const currentQuestionIndex = ref(0)
+  const questions = ref(savedQuestions ?? [])
+  const currentQuestionIndex = ref(savedQuestion ? parseInt(savedQuestion) - 1 : 0)
   const correctAnswersCount = ref(0)
 
   const totalQuestionsCount = computed(() => questions.value.length)
@@ -31,12 +34,17 @@ export const useQuestionsStore = defineStore('questions', () => {
   })
 
   const getQuestions = async () => {
-    if (!!questions.value.length) return
+    if (!!questions.value?.length) {
+      loading.value = false
+      return
+    }
 
     try {
       const { isFetching, data } = await useFetch(import.meta.env.VITE_QUESTIONS_URL)
 
       questions.value = JSON.parse(data.value).results
+      localStorage.setItem('questions', JSON.stringify(questions.value))
+
       loading.value = isFetching.value
     } catch (e) {
       console.log(e)
