@@ -36,7 +36,7 @@ const questionText = computed(() => questionsStore.currentQuestion?.question)
 
 <style scoped>
 .page {
-  background-image: url('src/assets/images/backgrounds/questions.jpg');
+  background-image: url('images/backgrounds/questions.jpg');
 }
 
 .container {

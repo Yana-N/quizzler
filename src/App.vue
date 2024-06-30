@@ -5,7 +5,7 @@ import { computed } from 'vue'
 const route = useRoute()
 
 const pageName = computed(() => route.fullPath.includes('question') ? 'questions' : route.name)
-const bgPath = computed(() => `background-image: url(src/assets/images/backgrounds/${pageName.value}.jpg)`)
+const bgPath = computed(() => `background-image: url(images/backgrounds/${pageName.value}.jpg)`)
 </script>
 
 <template>

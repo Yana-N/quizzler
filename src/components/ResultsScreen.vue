@@ -20,7 +20,7 @@ const { goToStartPage } = useQueryHandler()
 .page {
   flex-direction: column;
   text-align: center;
-  background-image: url('../assets/images/backgrounds/results.jpg');
+  background-image: url('images/backgrounds/results.jpg');
 }
 
 .score {
