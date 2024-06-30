@@ -1,22 +1,20 @@
 <script setup>
-import { ref, computed, toRefs } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { ref, toRefs } from 'vue'
 import { useEventListener } from '@vueuse/core'
+import { useQuestionsStore } from '@/stores/questions.js'
+import { useQueryHandler } from '@/composables/useQueryHandler.js'
 import QField from '@/components/Questions/QField.vue'
 import QButton from '@/components/Questions/QButton.vue'
-import { useQuestionsStore } from '@/stores/questions.js'
-import { getKeyByValue } from '@/utils.js'
-
-const router = useRouter()
-const route = useRoute()
 
 const questionsStore = useQuestionsStore()
+const { incrementQuestionParam, goToResultsPage } = useQueryHandler()
 
 const {
   questions,
   currentQuestionIndex,
   correctAnswersCount,
-  correctAnswer
+  indexOfCorrectAnswer,
+  answerOptions
 } = toRefs(questionsStore)
 
 const isButtonDisabled = ref(true)
@@ -31,20 +29,8 @@ const nextQuestion = () => {
   isButtonDisabled.value = true
   isAnswered.value = false
 
-  router.replace({ query: { ...route.query, question: currentQuestionIndex.value + 1 } })
+  incrementQuestionParam()
 }
-
-const goToResults = () => router.push({ name: 'results' })
-
-const answerOptions = questions.value.map(q => {
-  return Object.values({ ...q.incorrect_answers, [q.incorrect_answers.length]: q.correct_answer })
-})
-
-const indexOfCorrectAnswer = computed(() => {
-  return parseInt(
-    getKeyByValue(answerOptions[currentQuestionIndex.value], correctAnswer.value
-    ), 10)
-})
 
 const selectOption = (index) => {
   isButtonDisabled.value = false
@@ -57,7 +43,7 @@ const selectOption = (index) => {
 }
 
 const isKeyInRange = (key) => {
-  return +key > 0 && +key <= answerOptions[0].length
+  return +key > 0 && +key <= answerOptions.value[0].length
 }
 
 const handleKeyup = ({ key }) => {
@@ -90,7 +76,7 @@ useEventListener(window, 'keyup', (e) => {
     ref="button"
     :disabled="isButtonDisabled"
     @next="nextQuestion"
-    @go-to-results="goToResults"
+    @go-to-results="goToResultsPage"
     class="button"
   />
 </template>

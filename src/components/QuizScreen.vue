@@ -1,18 +1,15 @@
 <script setup>
-import { computed, toRefs } from 'vue'
+import { computed } from 'vue'
 import QText from '@/components/Questions/QText.vue'
 import QForm from '@/components/Questions/QForm.vue'
 import { useQuestionsStore } from '@/stores/questions.js'
+import { useQueryHandler } from '@/composables/useQueryHandler.js'
 import Loader from '@/components/Loader.vue'
-import { useRoute, useRouter } from 'vue-router'
-
-const router = useRouter()
-const route = useRoute()
 
 const questionsStore = useQuestionsStore()
+const { incrementQuestionParam } = useQueryHandler()
 
-router.replace({ query: { ...route.query, question: questionsStore.currentQuestionIndex + 1 } })
-
+incrementQuestionParam()
 questionsStore.getQuestions()
 
 const questionText = computed(() => questionsStore.currentQuestion?.question)
