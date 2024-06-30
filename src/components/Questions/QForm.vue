@@ -72,7 +72,6 @@ useEventListener(window, 'keyup', (e) => {
 </script>
 
 <template>
-  {{ correctAnswersCount }}
   <div class="q-form">
     <q-field
       v-for="(text, index) in answerOptions[currentQuestionIndex]"

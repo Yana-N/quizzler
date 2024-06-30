@@ -1,7 +1,18 @@
 <script setup>
 import IconArrow from '@/assets/images/icons/arrow.vue'
+import { useQuestionsStore } from '@/stores/questions.js'
 
-localStorage.clear()
+const questionsStore = useQuestionsStore()
+
+const setDefaultState = () => {
+  localStorage.clear()
+
+  questionsStore.currentQuestionIndex = 0
+  questionsStore.correctAnswersCount = 0
+  questionsStore.questions = []
+}
+
+setDefaultState()
 </script>
 
 <template>
