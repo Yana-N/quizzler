@@ -1,21 +1,29 @@
 <script setup>
 import { convertNumToLetter } from '@/utils.js'
 
+const handleSelect = (index) => emit('select-option', index)
+
+const emit = defineEmits(['select-option'])
+
 defineProps({
-  answer: {
-    type: Object,
-    default: () => ({})
+  index: {
+    type: Number,
+    required: true
+  },
+  text: {
+    type: String,
+    required: true
   }
 })
 </script>
 
 <template>
   <div
-    @click="$emit('select-option', answer.index)"
+    @click="handleSelect(index)"
     class="field"
   >
-    <div class="index">{{ convertNumToLetter(answer.index) }}</div>
-    <p v-html="answer.text" class="text" />
+    <div class="index">{{ convertNumToLetter(index) }}</div>
+    <p v-html="text" class="text" />
   </div>
 </template>
 

@@ -2,6 +2,8 @@
 import { computed, toRefs } from 'vue'
 import { useQuestionsStore } from '@/stores/questions.js'
 
+const emit = defineEmits(['go-to-results', 'next'])
+
 const questionsStore = useQuestionsStore()
 const { currentQuestionIndex, totalQuestionsCount } = toRefs(questionsStore)
 
@@ -10,11 +12,13 @@ const isLastQuestion = computed(() => {
 })
 
 const btnText = computed(() => isLastQuestion.value ? 'Finish' : 'Next')
+
+const navigatePage = () => emit(isLastQuestion.value ? 'go-to-results' : 'next')
 </script>
 
 <template>
   <button
-    @click="$emit(isLastQuestion ? 'go-to-results' : 'next')"
+    @click="navigatePage"
     class="button"
   >
     {{ btnText }}

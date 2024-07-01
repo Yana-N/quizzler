@@ -76,7 +76,8 @@ useEventListener(window, 'keyup', (e) => {
     <q-field
       v-for="(text, index) in answerOptions[currentQuestionIndex]"
       :key="index"
-      :answer="{ text, index }"
+      :text="text"
+      :index="+index"
       @select-option="selectOption"
       @keyup="handleKeyup"
       :class="{

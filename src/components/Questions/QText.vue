@@ -1,15 +1,23 @@
 <script setup>
 defineProps({
-  question: {
-    type: Object,
-    default: () => ({})
+  currentIndex: {
+    type: Number,
+    required: true
+  },
+  total: {
+    type: Number,
+    required: true
+  },
+  text: {
+    type: String,
+    required: true
   }
 })
 </script>
 
 <template>
-  <p class="score">Question {{ question.currentIndex }}/{{ question.total }}</p>
-  <p v-html="question.text" class="text" />
+  <p class="score">Question {{ currentIndex }}/{{ total }}</p>
+  <p v-html="text" class="text" />
   <hr>
 </template>
 

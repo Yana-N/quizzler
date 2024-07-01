@@ -23,11 +23,9 @@ const questionText = computed(() => questionsStore.currentQuestion?.question)
       class="container"
     >
       <q-text
-        :question="{
-            currentIndex: questionsStore.currentQuestionIndex + 1,
-            total: questionsStore.totalQuestionsCount,
-            text: questionText
-          }"
+        :currentIndex="questionsStore.currentQuestionIndex + 1"
+        :total="questionsStore.totalQuestionsCount"
+        :text="questionText"
       />
       <q-form />
     </div>
