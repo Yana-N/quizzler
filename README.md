@@ -1,3 +1,6 @@
+## Demo
+https://quizzler-app.netlify.app/
+
 # quizzler
 
 This template should help get you started developing with Vue 3 in Vite.
